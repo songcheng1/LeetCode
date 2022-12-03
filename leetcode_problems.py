@@ -49,3 +49,25 @@ class Solution:
         result += temp_dict[s[-1]]
         return result
 # **********************************************************************************************************
+# 14. 最长公共前缀
+
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
+        if len(strs) == 0:
+            return ''
+        elif len(strs) == 1:
+            return strs[0]
+        else:
+            b = sorted(strs, key=lambda x:len(x)) # 按字符串的长度进行排序
+            s = ''
+            s1 = b[0]
+            for i, v in enumerate(s1): # 对第一个字符串进行枚举，遍历其每一个字符
+                l = []
+                for j in b[1:]:		   # 从第二个字符串开始遍历之后的所有字符串
+                    l.append(v==j[i])  # 将字符比较的bool值添加到列表l中
+                if all(l):			   # 如果列表l中的所有值都为True
+                    s += v
+                else:
+                    break
+            return s
+

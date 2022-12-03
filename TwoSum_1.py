@@ -23,4 +23,4 @@ class Solution:
                 break
         if j>=0:
             return [j,i]
-            
+           

@@ -1,4 +1,4 @@
-# 两数之和（返回对应索引）
+# 1.两数之和（返回对应索引）
 
         # 答案1:
         class Solution:
@@ -130,3 +130,18 @@ class Solution:
                 new_lists = list1 + list2
                 new_lists.sort()
                 return new_lists
+        
+# **********************************************************************************************************
+# 26. 删除有序数组中的重复项
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        slow, fast = 1, 1
+        while fast < len(nums):
+            if nums[fast] != nums[fast -1]:
+                nums[slow] = nums[fast]
+                slow += 1
+            fast += 1
+        return slow
+

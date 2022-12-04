@@ -88,3 +88,45 @@ class Solution:
             else:
                 stack.append(char)
         return not stack
+
+
+
+# **********************************************************************************************************
+# 21. 合并两个有序链表
+        
+        # 答案1:
+        # Definition for singly-linked list.
+        # class ListNode:
+        #     def __init__(self, val=0, next=None):
+        #         self.val = val
+        #         self.next = next
+        class Solution:
+            def mergeTwoLists(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+                if not l1 and not l2:
+                    return None
+                if not l1 and l2:
+                    return l2
+                if l1 and not l2:
+                    return l1
+                headForList = ListNode(0)
+                myListNode = headForList
+                while l1 and l2:
+                    if l1.val <= l2.val:
+                        myListNode.next = l1
+                        l1 = l1.next
+                    else:
+                        myListNode.next = l2
+                        l2 = l2.next
+                    myListNode = myListNode.next
+                if l1:
+                    myListNode.next = l1
+                else:
+                    myListNode.next = l2
+                return headForList.next
+        
+        # 答案2:
+        class Solution:
+            def mergeTwoLists(self, list1, list2):
+                new_lists = list1 + list2
+                new_lists.sort()
+                return new_lists

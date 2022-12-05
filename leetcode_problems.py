@@ -35,6 +35,20 @@ class Solution(object):
         return s == s[::-1]
 
 # **********************************************************************************************************
+# 125. 验证回文串
+import re
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        s = "".join(filter(str.isalnum, s)).lower()
+        new_strs = re.findall("[A-Za-z0-9]+", s)
+        new_str = new_strs[0] if new_strs else s
+        if new_str == new_str[::-1]:
+            return True
+        else:
+            return False
+
+
+# **********************************************************************************************************
 # 13. 罗马数字转整数
 
 class Solution:

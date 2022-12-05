@@ -157,7 +157,79 @@ class Solution:
                 nums[index] = nums[i]
                 index += 1
         return index
+    
+    
+# **********************************************************************************************************
+# 35. 搜索插入位置   
+class Solution:
+    def searchInsert(self, nums: List[int], target: int) -> int:
+        if target in nums:
+            for index_, i in enumerate(nums):
+                if target==i:
+                    return index_
+        else:
+            nums.append(target)
+            nums.sort()
+            for j_index, j in enumerate(nums):
+                if target==j:
+                    return j_index
+                
+                
+# **********************************************************************************************************
+# 58. 最后一个单词的长度                 
+class Solution:
+    def lengthOfLastWord(self, s: str) -> int:
+        res = s.split(' ')
+        for i in range(len(res)):
+            if res[len(res)-i-1] != '':
+                return len(res[len(res)-i-1])
+        return 0
+    
+    
 
+# **********************************************************************************************************
+# 66. 加一   
+class Solution:
+    def plusOne(self, digits: List[int]) -> List[int]:
+        for site in range(len(digits)-1, -1, -1):
+            if digits[site] != 9:
+                digits[site] += 1
+                return digits
+            else:
+                digits[site] = 0
+        digits.insert(0,1)
+        return digits
+
+    
+# **********************************************************************************************************
+# 67. 二进制求和     
+class Solution:
+    def addBinary(self, a: str, b: str) -> str:
+        length1 = len(a)
+        length2 = len(b)
+        if length1 < 1 or length1 > 10 ** 4:
+            return 
+        if length2 < 1 or length2 > 10 ** 4:
+            return
+        result = ""
+        carry_out = 0
+        index1 = length1 - 1
+        index2 = length2 - 1
+        while index1 >= 0 or index2 >= 0 or carry_out == 1:
+            if index1 >= 0:
+                auxiliary1 = int(a[index1])
+            else:
+                auxiliary1 = 0
+            if index2 >= 0:
+                auxiliary2 = int(b[index2])
+            else:
+                auxiliary2 = 0
+            carry_out, auxiliary3 = divmod(auxiliary1 + auxiliary2 + carry_out, 2)
+            result = str(auxiliary3) + result
+            index1 -= 1
+            index2 -= 1
+        return result
+    
 # **********************************************************************************************************
 # 69. x 的平方根 
 class Solution:

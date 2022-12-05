@@ -167,3 +167,19 @@ class Solution:
         for i in range(2,n+1):
             res[i] = res[i-1] + res[i-2]
         return res[-1]  
+
+# **********************************************************************************************************
+# 69. x 的平方根 
+class Solution:
+    def mySqrt(self, x: int) -> int:
+        if x < 0:
+            return -1
+        l, r, ans = 0, x, x 
+        while l <= r:
+            mid = l + ((r - l) >> 1)
+            if mid * mid > x:
+                r = mid - 1
+            else:
+                ans = mid
+                l = mid + 1
+        return ans

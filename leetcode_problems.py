@@ -34,20 +34,6 @@ class Solution(object):
         return s == s[::-1]
 
 # **********************************************************************************************************
-# 125. 验证回文串
-import re
-class Solution:
-    def isPalindrome(self, s: str) -> bool:
-        s = "".join(filter(str.isalnum, s)).lower()
-        new_strs = re.findall("[A-Za-z0-9]+", s)
-        new_str = new_strs[0] if new_strs else s
-        if new_str == new_str[::-1]:
-            return True
-        else:
-            return False
-
-
-# **********************************************************************************************************
 # 13. 罗马数字转整数
 
 class Solution:
@@ -159,14 +145,18 @@ class Solution:
         return slow
 
 # **********************************************************************************************************
-# 70. 爬楼梯
+# 27. 移除元素
 class Solution:
-    def climbStairs(self, n: int) -> int:
-        res = [0] * (n+1)
-        res[0] = res[1] =1 
-        for i in range(2,n+1):
-            res[i] = res[i-1] + res[i-2]
-        return res[-1]  
+    def removeElement(self, nums: List[int], val: int) -> int:
+        if nums == []:
+            return 0
+        index = 0
+        m = len(nums)
+        for i in range(m):
+            if val != nums[i]:
+                nums[index] = nums[i]
+                index += 1
+        return index
 
 # **********************************************************************************************************
 # 69. x 的平方根 
@@ -183,3 +173,28 @@ class Solution:
                 ans = mid
                 l = mid + 1
         return ans
+
+     
+# **********************************************************************************************************
+# 70. 爬楼梯
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        res = [0] * (n+1)
+        res[0] = res[1] =1 
+        for i in range(2,n+1):
+            res[i] = res[i-1] + res[i-2]
+        return res[-1]  
+
+
+# **********************************************************************************************************
+# 125. 验证回文串
+import re
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        s = "".join(filter(str.isalnum, s)).lower()
+        new_strs = re.findall("[A-Za-z0-9]+", s)
+        new_str = new_strs[0] if new_strs else s
+        if new_str == new_str[::-1]:
+            return True
+        else:
+            return False
